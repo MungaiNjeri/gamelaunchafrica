@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* base dark background */
+:root {
+--bg-grad-1: rgba(10,10,10,1);
+--bg-grad-2: rgba(6,6,10,1);
+}
+
+
+html, body, #root { height: 100%; }
+body {
+@apply bg-gradient-to-b from-gloss-black to-gla-deep text-gray-200;
+font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+
+/* animated subtle grid */
+.bg-grid {
+background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+background-size: 40px 40px;
+opacity: 0.08;
+}
+
+
+/* neon button */
+.btn-neon {
+@apply px-5 py-3 rounded-lg text-black font-semibold;
+background: linear-gradient(90deg, #00FF99 0%, #8A2BE2 100%);
+box-shadow: 0 8px 30px rgba(138,43,226,0.12);
+}
+
+
+/* subtle glow */
+.glow {
+box-shadow: 0 6px 28px rgba(0,255,153,0.06);
+}
