@@ -1,51 +1,55 @@
-import { useState } from 'react';
-import { Menu, X, Gamepad2 } from 'lucide-react';
-import Button from './Button';
+import { useState } from "react";
+import { Menu, X, Gamepad2 } from "lucide-react";
+import Button from "./Button";
 
 interface NavbarProps {
   currentPage?: string;
   onNavigate?: (page: string) => void;
 }
 
-export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps) {
+export default function Navbar({ currentPage = "home", onNavigate }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'games', label: 'Games' },
-    { id: 'learning', label: 'Learning' },
-    { id: 'mentors', label: 'Mentors' },
-    { id: 'dashboard', label: 'Dashboard' }
+    { id: "home", label: "Home" },
+    { id: "games", label: "Games" },
+    { id: "learning", label: "Learning" },
+    { id: "mentors", label: "Mentors" },
+    { id: "dashboard", label: "Dashboard" },
   ];
 
   const handleNavigation = (page: string) => {
-    if (onNavigate) {
-      onNavigate(page);
-    }
+    onNavigate?.(page);
     setIsMenuOpen(false);
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-lg border-b border-gray-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleNavigation('home')}>
-            <Gamepad2 className="w-8 h-8 text-green-500" />
+
+          {/* Logo */}
+          <div
+            className="flex items-center gap-2 cursor-pointer group"
+            onClick={() => handleNavigation("home")}
+          >
+            <Gamepad2 className="w-8 h-8 text-neon-green group-hover:scale-110 transition" />
             <span className="text-2xl font-bold">
               <span className="text-white">GameLaunch</span>
-              <span className="text-green-500"> Africa</span>
+              <span className="text-neon-green"> Africa</span>
             </span>
           </div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition ${
                   currentPage === item.id
-                    ? 'text-green-500'
-                    : 'text-gray-300 hover:text-white'
+                    ? "text-neon-green"
+                    : "text-gray-300 hover:text-white hover:scale-105"
                 }`}
               >
                 {item.label}
@@ -53,15 +57,17 @@ export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps
             ))}
           </div>
 
+          {/* Auth */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" onClick={() => handleNavigation('login')}>
+            <Button variant="outline" onClick={() => handleNavigation("login")}>
               Login
             </Button>
-            <Button variant="secondary" onClick={() => handleNavigation('signup')}>
+            <Button variant="primary" onClick={() => handleNavigation("signup")}>
               Sign Up
             </Button>
           </div>
 
+          {/* Mobile Button */}
           <button
             className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -71,27 +77,36 @@ export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black border-t border-gray-800">
+        <div className="md:hidden bg-black/95 border-t border-gray-800">
           <div className="px-4 py-4 space-y-3">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                className={`block w-full text-left px-4 py-2 rounded-lg transition ${
                   currentPage === item.id
-                    ? 'bg-purple-600 text-white'
-                    : 'text-gray-300 hover:bg-gray-900'
+                    ? "bg-neon-green/20 text-neon-green"
+                    : "text-gray-300 hover:bg-gray-900"
                 }`}
               >
                 {item.label}
               </button>
             ))}
             <div className="pt-4 space-y-2">
-              <Button variant="outline" className="w-full" onClick={() => handleNavigation('login')}>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => handleNavigation("login")}
+              >
                 Login
               </Button>
-              <Button variant="secondary" className="w-full" onClick={() => handleNavigation('signup')}>
+              <Button
+                variant="primary"
+                className="w-full"
+                onClick={() => handleNavigation("signup")}
+              >
                 Sign Up
               </Button>
             </div>
