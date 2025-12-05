@@ -1,4 +1,4 @@
-import { Gamepad2, BookOpen, Users, Trophy, TrendingUp } from 'lucide-react';
+import { Gamepad2, BookOpen, Users, Trophy, } from 'lucide-react';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import Hero from '../components/Hero';
@@ -10,54 +10,23 @@ interface LandingPageProps {
 
 export default function LandingPage({ onNavigate }: LandingPageProps) {
   const features = [
-    {
-      icon: Gamepad2,
-      title: 'Discover African Games',
-      description: 'Explore games created by talented African developers and studios'
-    },
-    {
-      icon: BookOpen,
-      title: 'Learn & Grow',
-      description: 'Access tutorials, guides, and resources to level up your gaming skills'
-    },
-    {
-      icon: Users,
-      title: 'Find Mentors',
-      description: 'Connect with experienced African game developers and industry professionals'
-    },
-    {
-      icon: Trophy,
-      title: 'Showcase Your Work',
-      description: 'Share your games and projects with a passionate gaming community'
-    }
+    { icon: Gamepad2, title: 'Discover African Games', description: 'Explore games created by talented African developers and studios' },
+    { icon: BookOpen, title: 'Learn & Grow', description: 'Access tutorials, guides, and resources to level up your gaming skills' },
+    { icon: Users, title: 'Find Mentors', description: 'Connect with experienced African game developers and industry professionals' },
+    { icon: Trophy, title: 'Showcase Your Work', description: 'Share your games and projects with a passionate gaming community' },
   ];
 
   const stats = [
     { value: '500+', label: 'African Games' },
     { value: '10K+', label: 'Active Gamers' },
     { value: '200+', label: 'Mentors' },
-    { value: '50+', label: 'Countries' }
+    { value: '50+', label: 'Countries' },
   ];
 
   const featuredGames = [
-    {
-      title: 'African Legends',
-      developer: 'Lagos Game Studio',
-      image: 'https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg',
-      rating: 4.8
-    },
-    {
-      title: 'Savanna Warriors',
-      developer: 'Cape Town Devs',
-      image: 'https://images.pexels.com/photos/7915376/pexels-photo-7915376.jpeg',
-      rating: 4.6
-    },
-    {
-      title: 'Nairobi Nights',
-      developer: 'East African Games',
-      image: 'https://images.pexels.com/photos/3945657/pexels-photo-3945657.jpeg',
-      rating: 4.9
-    }
+    { title: 'African Legends', developer: 'Lagos Game Studio', image: 'https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg', rating: 4.8 },
+    { title: 'Savanna Warriors', developer: 'Cape Town Devs', image: 'https://images.pexels.com/photos/7915376/pexels-photo-7915376.jpeg', rating: 4.6 },
+    { title: 'Nairobi Nights', developer: 'East African Games', image: 'https://images.pexels.com/photos/3945657/pexels-photo-3945657.jpeg', rating: 4.9 },
   ];
 
   return (
@@ -71,7 +40,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         ctaSecondary={{ label: 'Explore Games', onClick: () => onNavigate?.('games') }}
       />
 
-      {/* Stats Section */}
+      {/* Stats */}
       <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {stats.map((stat, idx) => (
@@ -83,31 +52,24 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Everything You Need to <span className="text-green-500">Succeed</span>
-          </h2>
-          <p className="text-gray-400 text-lg mb-12">
-            Join a platform built by African gamers, for African gamers
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, idx) => (
-              <Card key={idx} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-green-500 rounded-xl mb-4">
-                  <feature.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-white">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
-              </Card>
-            ))}
-          </div>
+      {/* Features */}
+      <section className="py-20 bg-gradient-to-b from-black to-gray-900 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Everything You Need to <span className="text-green-500">Succeed</span></h2>
+        <p className="text-gray-400 text-lg mb-12">Join a platform built by African gamers, for African gamers</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, idx) => (
+            <Card key={idx} className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-green-500 rounded-xl mb-4">
+                <feature.icon className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-white">{feature.title}</h3>
+              <p className="text-gray-400">{feature.description}</p>
+            </Card>
+          ))}
         </div>
       </section>
 
-      {/* Featured Games Section */}
+      {/* Featured Games */}
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
@@ -115,11 +77,15 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               <h2 className="text-4xl font-bold mb-2">Featured Games</h2>
               <p className="text-gray-400">Discover what's trending in African gaming</p>
             </div>
-            <Button variant="outline" onClick={() => onNavigate?.('games')}>
+            {/* Themed smaller button */}
+            <Button
+              variant="outline"
+              className="py-2 px-4 text-sm font-semibold rounded-lg border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-colors"
+              onClick={() => onNavigate?.('games')}
+            >
               View All
             </Button>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredGames.map((game) => (
               <GameCard key={game.title} {...game} />
@@ -128,19 +94,25 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Call to Action Section */}
+      {/* CTA Section */}
       <section className="py-20 bg-black text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-600 to-green-500 rounded-full mb-6">
-            <TrendingUp className="w-10 h-10 text-white" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Level Up?</h2>
-          <p className="text-xl text-gray-400 mb-8">
-            Join thousands of African gamers and developers on their journey to success
-          </p>
-          <Button variant="secondary" className="text-lg" onClick={() => onNavigate?.('signup')}>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Level Up?</h2>
+        <p className="text-xl text-gray-400 mb-8">Join thousands of African gamers and developers on their journey to success</p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            onClick={() => onNavigate?.('signup')}
+            className="px-4 py-2 text-sm bg-gradient-to-r from-purple-600 to-green-500 text-white font-semibold rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+          >
             Create Your Account
-          </Button>
+          </button>
+
+          <button
+            onClick={() => onNavigate?.('stream')}
+            className="px-4 py-2 text-sm bg-gradient-to-r from-green-500 to-yellow-500 text-white font-semibold rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+          >
+            Watch Live Stream
+          </button>
         </div>
       </section>
 

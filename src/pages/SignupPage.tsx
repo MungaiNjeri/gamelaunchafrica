@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 import { Gamepad2, Mail, Lock, User } from 'lucide-react';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -116,7 +116,12 @@ export default function SignupPage({ onNavigate }: SignupPageProps) {
               </label>
             </div>
 
-            <Button type="submit" variant="secondary" className="w-full">
+            {/* Themed smaller button */}
+            <Button
+              type="submit"
+              variant="secondary"
+              className="w-full py-2 text-sm rounded-lg bg-green-500 hover:bg-green-600 text-white font-semibold transition-colors"
+            >
               Create Account
             </Button>
 
@@ -132,13 +137,13 @@ export default function SignupPage({ onNavigate }: SignupPageProps) {
             <div className="grid grid-cols-2 gap-4">
               <button
                 type="button"
-                className="px-4 py-3 bg-gray-800 hover:bg-gray-750 border border-gray-700 rounded-lg text-white transition-colors"
+                className="px-4 py-2 bg-green-500 hover:bg-green-600 border border-green-500 rounded-lg text-white text-sm font-medium transition-colors"
               >
                 Google
               </button>
               <button
                 type="button"
-                className="px-4 py-3 bg-gray-800 hover:bg-gray-750 border border-gray-700 rounded-lg text-white transition-colors"
+                className="px-4 py-2 bg-purple-500 hover:bg-purple-600 border border-purple-500 rounded-lg text-white text-sm font-medium transition-colors"
               >
                 GitHub
               </button>
