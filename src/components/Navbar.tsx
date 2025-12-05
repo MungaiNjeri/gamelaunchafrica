@@ -15,6 +15,8 @@ export default function Navbar({ currentPage = "home", onNavigate }: NavbarProps
     { id: "games", label: "Games" },
     { id: "learning", label: "Learning" },
     { id: "mentors", label: "Mentors" },
+    { id: "stream", label: "Streaming" },
+    { id: "tournaments", label: "Tournaments" },
     { id: "dashboard", label: "Dashboard" },
   ];
 
@@ -57,17 +59,25 @@ export default function Navbar({ currentPage = "home", onNavigate }: NavbarProps
             ))}
           </div>
 
-          {/* Auth */}
+          {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" onClick={() => handleNavigation("login")}>
+            <Button
+              variant="outline"
+              className="px-3 py-1 text-sm rounded-lg"
+              onClick={() => handleNavigation("login")}
+            >
               Login
             </Button>
-            <Button variant="primary" onClick={() => handleNavigation("signup")}>
+            <Button
+              variant="primary"
+              className="px-3 py-1 text-sm rounded-lg"
+              onClick={() => handleNavigation("signup")}
+            >
               Sign Up
             </Button>
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -94,17 +104,18 @@ export default function Navbar({ currentPage = "home", onNavigate }: NavbarProps
                 {item.label}
               </button>
             ))}
+
             <div className="pt-4 space-y-2">
               <Button
                 variant="outline"
-                className="w-full"
+                className="w-full px-3 py-1 text-sm rounded-lg"
                 onClick={() => handleNavigation("login")}
               >
                 Login
               </Button>
               <Button
                 variant="primary"
-                className="w-full"
+                className="w-full px-3 py-1 text-sm rounded-lg"
                 onClick={() => handleNavigation("signup")}
               >
                 Sign Up

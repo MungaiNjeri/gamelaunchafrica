@@ -8,9 +8,58 @@ export default function MentorsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedExpertise, setSelectedExpertise] = useState('all');
 
-  const expertiseAreas = ['All', 'Unity', 'Unreal Engine', 'Game Design', '3D Art', 'Programming', 'Sound Design'];
+  const expertiseAreas = [
+    'All',
+    'Unity',
+    'Unreal Engine',
+    'Game Design',
+    '3D Art',
+    'Programming',
+    'Sound Design',
+    'Streaming',
+    'Content Creation'
+  ];
 
   const mentors = [
+    // 🇰🇪 Kenyan Mentors
+    {
+      name: 'Brian Mwangi',
+      title: 'Game Developer',
+      company: 'Nairobi Gaming Studio',
+      location: 'Nairobi, Kenya',
+      image: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg',
+      expertise: ['Unity', 'Programming', 'Game Design'],
+      rating: 4.9,
+      sessions: 164,
+      bio: 'Passionate Kenyan game developer building games that reflect African culture.',
+      experience: '7+ years'
+    },
+    {
+      name: 'Ann Wanjiku',
+      title: 'Pro Gamer & Streamer',
+      company: 'Twitch / YouTube Gaming',
+      location: 'Nairobi, Kenya',
+      image: 'https://images.pexels.com/photos/1181681/pexels-photo-1181681.jpeg',
+      expertise: ['Streaming', 'Content Creation'],
+      rating: 4.8,
+      sessions: 122,
+      bio: 'Expert in streaming setups, content growth, and guiding new African streamers.',
+      experience: '5+ years'
+    },
+    {
+      name: 'Sifuna Ouma',
+      title: '3D Artist & Animator',
+      company: 'Kenya Creative Media',
+      location: 'Kisumu, Kenya',
+      image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg',
+      expertise: ['3D Art', 'Blender', 'Animation'],
+      rating: 4.9,
+      sessions: 99,
+      bio: 'Creates African-inspired 3D game worlds and characters.',
+      experience: '6+ years'
+    },
+
+    // 🌍 Other African mentors
     {
       name: 'Adewale Johnson',
       title: 'Senior Game Developer',
@@ -56,7 +105,7 @@ export default function MentorsPage() {
       expertise: ['Sound Design', 'Music Production', 'Audio Engineering'],
       rating: 4.7,
       sessions: 87,
-      bio: 'Blending traditional African sounds with modern game audio. Helping developers create unique soundscapes.',
+      bio: 'Blending traditional African sounds with modern game audio.',
       experience: '6+ years'
     },
     {
@@ -68,7 +117,7 @@ export default function MentorsPage() {
       expertise: ['Game Design', 'Level Design', 'Narrative'],
       rating: 4.8,
       sessions: 124,
-      bio: 'Crafting engaging gameplay experiences. Focused on making games that resonate with African audiences.',
+      bio: 'Crafting engaging gameplay experiences for African audiences.',
       experience: '9+ years'
     },
     {
@@ -80,32 +129,43 @@ export default function MentorsPage() {
       expertise: ['Unreal Engine', '3D Art', 'VFX'],
       rating: 4.9,
       sessions: 103,
-      bio: 'Bridging the gap between art and technology. Specializing in real-time rendering and shader development.',
+      bio: 'Specializing in real-time rendering and shader development.',
       experience: '8+ years'
     }
   ];
 
-  const filteredMentors = mentors.filter(mentor => {
-    const matchesSearch = mentor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         mentor.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         mentor.expertise.some(exp => exp.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesExpertise = selectedExpertise === 'all' ||
-                            mentor.expertise.some(exp => exp.toLowerCase() === selectedExpertise.toLowerCase());
+  const filteredMentors = mentors.filter((mentor) => {
+    const matchesSearch =
+      mentor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      mentor.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      mentor.expertise.some((exp) =>
+        exp.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+    const matchesExpertise =
+      selectedExpertise === 'all' ||
+      mentor.expertise.some(
+        (exp) => exp.toLowerCase() === selectedExpertise.toLowerCase()
+      );
+
     return matchesSearch && matchesExpertise;
   });
 
   return (
     <div className="min-h-screen bg-black text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Find Your <span className="text-green-500">Mentor</span>
           </h1>
           <p className="text-gray-400 text-lg">
-            Connect with experienced African game developers and industry professionals
+            Connect with experienced African game developers, streamers, and industry professionals.
           </p>
         </div>
 
+        {/* Search + Filter */}
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="flex-1 relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -122,6 +182,7 @@ export default function MentorsPage() {
           </Button>
         </div>
 
+        {/* Expertise Filter Buttons */}
         <div className="flex flex-wrap gap-3 mb-8">
           {expertiseAreas.map((expertise) => (
             <button
@@ -138,12 +199,14 @@ export default function MentorsPage() {
           ))}
         </div>
 
+        {/* Number of mentors */}
         <div className="mb-6">
           <p className="text-gray-400">
             Showing <span className="text-white font-semibold">{filteredMentors.length}</span> mentors
           </p>
         </div>
 
+        {/* Mentor Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMentors.map((mentor, index) => (
             <Card key={index} className="flex flex-col">
@@ -192,7 +255,9 @@ export default function MentorsPage() {
               </div>
 
               <div className="flex items-center justify-between text-sm mb-4">
-                <span className="text-gray-400">Experience: <span className="text-white">{mentor.experience}</span></span>
+                <span className="text-gray-400">
+                  Experience: <span className="text-white">{mentor.experience}</span>
+                </span>
               </div>
 
               <Button variant="secondary" className="w-full flex items-center justify-center space-x-2">
@@ -203,6 +268,7 @@ export default function MentorsPage() {
           ))}
         </div>
 
+        {/* Empty state */}
         {filteredMentors.length === 0 && (
           <div className="text-center py-16">
             <p className="text-gray-400 text-lg mb-4">No mentors found matching your criteria</p>
@@ -212,6 +278,7 @@ export default function MentorsPage() {
           </div>
         )}
 
+        {/* Become a mentor CTA */}
         <Card className="mt-12 text-center bg-gradient-to-r from-purple-900/20 to-green-900/20 border-purple-600">
           <h2 className="text-2xl font-bold mb-4">Want to Become a Mentor?</h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">

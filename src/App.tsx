@@ -8,11 +8,14 @@ import LearningPage from './pages/LearningPage';
 import MentorsPage from './pages/MentorsPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import StreamingPage from './pages/StreamingPage';
+import TournamentPage from './pages/TournamentPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   const handleNavigate = (page: string) => {
+    console.log('Navigating to:', page); // debug
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -33,6 +36,10 @@ function App() {
         return <LoginPage onNavigate={handleNavigate} />;
       case 'signup':
         return <SignupPage onNavigate={handleNavigate} />;
+      case 'stream':
+        return <StreamingPage onNavigate={handleNavigate} />;
+      case 'tournaments':
+        return <TournamentPage/>;
       default:
         return <LandingPage onNavigate={handleNavigate} />;
     }
@@ -43,9 +50,7 @@ function App() {
   return (
     <div className="min-h-screen bg-black">
       {showNavAndFooter && <Navbar currentPage={currentPage} onNavigate={handleNavigate} />}
-      <div className={showNavAndFooter ? 'pt-20' : ''}>
-        {renderPage()}
-      </div>
+      <div className={showNavAndFooter ? 'pt-20' : ''}>{renderPage()}</div>
       {showNavAndFooter && <Footer />}
     </div>
   );
