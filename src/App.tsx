@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import StreamingPage from './pages/StreamingPage';
 import TournamentPage from './pages/TournamentPage';
+import CommunityPage from './pages/CommunityPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -40,6 +41,8 @@ function App() {
         return <StreamingPage onNavigate={handleNavigate} />;
       case 'tournaments':
         return <TournamentPage/>;
+      case 'community':
+        return <CommunityPage />;
       default:
         return <LandingPage onNavigate={handleNavigate} />;
     }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import { Menu, X, Gamepad2 } from "lucide-react";
 import Button from "./Button";
 
@@ -15,6 +15,7 @@ export default function Navbar({ currentPage = "home", onNavigate }: NavbarProps
     { id: "games", label: "Games" },
     { id: "learning", label: "Learning" },
     { id: "mentors", label: "Mentors" },
+    { id: "community", label: "Community" },   // ← ADDED HERE
     { id: "stream", label: "Streaming" },
     { id: "tournaments", label: "Tournaments" },
     { id: "dashboard", label: "Dashboard" },
@@ -109,7 +110,7 @@ export default function Navbar({ currentPage = "home", onNavigate }: NavbarProps
               <Button
                 variant="outline"
                 className="w-full px-3 py-1 text-sm rounded-lg"
-                onClick={() => handleNavigation("login")}
+              onClick={() => handleNavigation("login")}
               >
                 Login
               </Button>
